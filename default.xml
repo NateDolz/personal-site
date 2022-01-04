@@ -1,5 +1,6 @@
 <manifest>
     <remote name="github" fetch="https://github.com" sync-j="2"/>
     <default remote="github" revision="main" sync-j="4"/>
-    <project name="NateDolz/lunch-reporter.git" revision="master" remote="github" path="lunch"/>
+    <project name="NateDolz/personal-site-api-ruby.git" revision="main" remote="github" path="api-ruby"/>
+    <project name="NateDolz/personal-site-client.git" revision="main" remote="github" path="client"/>
 </manifest>
