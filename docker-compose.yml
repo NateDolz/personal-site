@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  database:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      PGPASSWORD: "${DB_PASSWORD:-secret}"
+      POSTGRES_DB: "${DB_DATABASE}"
+      POSTGRES_USER: "${DB_USERNAME}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-secret}"
+    healthcheck:
+        test:
+          [
+            "CMD",
+            "pg_isready",
+            "-q",
+            "-d",
+            "${DB_DATABASE}",
+            "-U",
+            "${DB_USERNAME}",
+          ]
+        retries: 3
+        timeout: 5s
+  api-ruby:
+    build:
+      context: ./api-ruby
+      dockerfile: Dockerfile
+    volumes:
+      - .:/api-ruby
+    ports:
+      - "${FORWARD_RUBY_PORT:-3000}:3000"
+    depends_on:
+      - database
+    
