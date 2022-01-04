@@ -1,5 +1,5 @@
 <manifest>
     <remote name="github" fetch="https://github.com" sync-j="2"/>
     <default remote="github" revision="main" sync-j="4"/>
-    <project name="NateDolz/lunch-reporter.git" remote="github" path="lunch"/>
+    <project name="NateDolz/lunch-reporter.git" revision="master" remote="github" path="lunch"/>
 </manifest>
